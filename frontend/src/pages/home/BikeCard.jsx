@@ -27,7 +27,7 @@ function BikeCard(props) {
                   style={{ borderColor: bikeData.color }}>
                   <div className="w-4 h-4 rounded-full" style={{ background: bikeData.color }} />
                 </div>
-                <p className="flex items-center text-base font-medium text-gray-600 capitalize capitalize">
+                <p className="flex items-center text-base font-medium text-gray-600 capitalize">
                   <LocationMarkerIcon
                     className="flex-shrink-0 w-4 h-4 text-gray-600"
                     aria-hidden="true"

@@ -31,6 +31,7 @@ const MyBike = () => {
               .doc(selectedTrip.bid)
               .update({ rating: avgRating })
               .then(() => {
+                toast.success('Bike Ride completed successfully.');
                 setActionType('');
               })
               .catch(() => {
@@ -48,6 +49,7 @@ const MyBike = () => {
       .doc(selectedTrip.id)
       .delete()
       .then(() => {
+        toast.success('Bike ride cancel successfully.');
         setActionType('');
       })
       .catch(() => {

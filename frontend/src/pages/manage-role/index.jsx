@@ -101,6 +101,7 @@ const ManageRole = () => {
                   userData={user}
                   handleAction={handleAction}
                   setSelectedUserData={setSelectedUserData}
+                  switchValue={switchValue}
                 />
               );
             })}

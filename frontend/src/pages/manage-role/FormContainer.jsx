@@ -9,7 +9,7 @@ import { getErrorMessage, regexForEmailAddress, regexForName, regexForPassword }
 import db, { auth } from '../../firebase';
 
 const FormContainer = (props) => {
-  const { actionType, selectedUserData, setActionType, setSwitchValue } = props;
+  const { actionType, selectedUserData, setActionType, setSwitchValue, switchValue } = props;
   const {
     handleSubmit,
     register,
@@ -29,6 +29,9 @@ const FormContainer = (props) => {
               role: values.role
             })
             .then(() => {
+              toast.success(
+                switchValue === 'manager' ? 'Manager added successfully' : 'User added successfully'
+              );
               setActionType('');
               setSwitchValue(values.role);
             })
@@ -44,6 +47,9 @@ const FormContainer = (props) => {
         .doc(selectedUserData.id)
         .update({ fullName: values.fullName, role: values.role })
         .then(() => {
+          toast.success(
+            switchValue === 'manager' ? 'Manager updated successfully' : 'User updated successfully'
+          );
           setActionType('');
           setSwitchValue(values.role);
         })

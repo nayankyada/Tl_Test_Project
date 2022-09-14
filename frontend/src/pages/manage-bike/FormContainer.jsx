@@ -31,6 +31,7 @@ const FormContainer = (props) => {
           isBikeAvailable: data.isBikeAvailable
         })
         .then(() => {
+          toast.success('Bike added successfully');
           setFormActionType('');
         })
         .catch((error) => {
@@ -46,6 +47,7 @@ const FormContainer = (props) => {
           isBikeAvailable: data.isBikeAvailable
         })
         .then(() => {
+          toast.success('Bike updated successfully');
           setFormActionType('');
         })
         .catch((error) => {

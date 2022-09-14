@@ -67,7 +67,10 @@ function BookModal(props) {
           rating: 0,
           isRideCompleted: false
         })
-        .then(() => handleCloseModal(false))
+        .then(() => {
+          handleCloseModal(false);
+          toast.success('Booking Successfully done');
+        })
         .catch(() => {
           toast.error('Something went wrong!, Please try again later');
         });

@@ -1,6 +1,8 @@
 //#Global Imports
 import React from 'react';
 import { StarIcon, LocationMarkerIcon } from '@heroicons/react/solid';
+import moment from 'moment';
+import { toast } from 'react-toastify';
 
 //#Local Imports
 import { classNames } from '../../utils';
@@ -17,6 +19,16 @@ function BikeCard(props) {
     handleDeleteTrip,
     setSelectedTrip
   } = props;
+
+  const currentDate = moment().format('M/DD/YYYY');
+  const endDateofRide = moment(tripData.end_date.toDate().toLocaleDateString());
+  const dayDifference = endDateofRide.diff(currentDate, 'days');
+
+  const handleRideDone = () => {
+    dayDifference < 1
+      ? (setActionType('complete_ride'), setSelectedTrip(tripData))
+      : dayDifference > 0 && toast.error("You can't done the ride before end date.");
+  };
 
   return (
     <>
@@ -78,10 +90,7 @@ function BikeCard(props) {
               <button
                 type="button"
                 className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-green-700 border border-transparent rounded-md shadow-sm hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-                onClick={() => {
-                  setActionType('complete_ride');
-                  setSelectedTrip(tripData);
-                }}>
+                onClick={handleRideDone}>
                 Done
               </button>
               <button
